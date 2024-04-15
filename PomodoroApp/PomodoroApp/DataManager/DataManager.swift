@@ -1,20 +1,22 @@
-////
-////  DataManager.swift
-////  PomodoroApp
-////
-////  Created by dti digital on 09/04/24.
-////
 //
-//import Foundation
-//import Combine
+//  DataManager.swift
+//  PomodoroApp
 //
+//  Created by dti digital on 09/04/24.
 //
-//struct RecipeManager {
-//    private static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//    private static let archiveURL = documentsDirectory.appendingPathComponent("timer").appendingPathExtension("plist")
-//    
-//    static let recipesDidChange = PassthroughSubject<Void, Never>()
-//    
+
+import Foundation
+import Combine
+
+
+struct DataManager {
+    private static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let archiveURL = documentsDirectory.appendingPathComponent("timer").appendingPathExtension("plist")
+    
+    static let recipesDidChange = PassthroughSubject<Void, Never>()
+    
+    
+    
 //    static func saveRecipe(_ recipe: Recipe) throws {
 //        do {
 //            var existingRecipes = try loadRecipes()
@@ -86,4 +88,4 @@
 //            return []
 //        }
 //    }
-//}
+}

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PomodoroTimerView: View {
-    @StateObject private var viewModel = PomodoroTimerViewModel(currentTime: TimeValue(minutes: 14, seconds: 0), totalTime: TimeValue(minutes: 24, seconds: 00))
+    @StateObject private var viewModel = PomodoroTimerViewModel(customTime: CustomTime(startTime: "08:00", focusTime: 10, quickStop: 10, longStop: 11, rounds: 4))
     
     var body: some View {
         
@@ -18,6 +18,9 @@ struct PomodoroTimerView: View {
             circles
                 .frame(width: 350)
             Spacer()
+        }
+        .onReceive(viewModel.timer) { time in
+            viewModel.tick()
         }
     }
     
@@ -33,13 +36,13 @@ struct PomodoroTimerView: View {
                 .stroke(style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .foregroundColor(Color.pink)
                 .rotationEffect(Angle(degrees: -90))
-                .animation(.linear, value: viewModel.convertToSec(timeValue: viewModel.currentTime))
+                .animation(.linear, value: viewModel.timeRemaining)
             
             VStack {
-                Text("\(viewModel.currentTime.formattedData)")
+                Text("\(viewModel.timeFormatted(from: viewModel.timeRemaining))")
                     .font(.custom("ZillaSlab-Bold", size: 48))
                 
-                Text("Foco Total")
+                Text("\(viewModel.currentPhase)")
                     .font(.custom("ZillaSlab-Medium", size: 20))
             }
         }

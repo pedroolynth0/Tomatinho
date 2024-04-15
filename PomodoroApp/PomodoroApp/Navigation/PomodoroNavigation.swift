@@ -11,4 +11,5 @@ enum PomodoroNavigation {
     case aboutView
     case historyView
     case timerView
+    case pomodoroView
 }

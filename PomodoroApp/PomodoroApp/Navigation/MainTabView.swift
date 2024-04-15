@@ -20,7 +20,7 @@ struct MainTabView: View {
                     Label("History", image: "icHistory")
                 }
             
-            PomodoroViewFactory.setViewForDestination(.aboutView)
+            PomodoroViewFactory.setViewForDestination(.pomodoroView)
                 .tabItem {
                     Label("About", image: "icFind")
                 }

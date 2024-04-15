@@ -19,6 +19,8 @@ class PomodoroViewFactory {
             return AnyView(AboutView())
         case .timerView:
             return AnyView(ConfigTimerView())
+        case .pomodoroView:
+            return AnyView(PomodoroTimerView())
         }
     }
 }

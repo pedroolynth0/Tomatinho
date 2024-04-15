@@ -7,17 +7,15 @@
 
 import Foundation
 
-struct Timer: Codable {
+struct CustomTime: Codable {
     let startTime: String
-    let endTime: String
-    let focusTime: String
-    let quickStop: String
-    let longStop: String
+    let focusTime: Int
+    let quickStop: Int
+    let longStop: Int
     let rounds: Int
     
-    init(startTime: String, endTime: String, focusTime: String, quickStop: String, longStop: String, rounds: Int) {
+    init(startTime: String, focusTime: Int, quickStop: Int, longStop: Int, rounds: Int) {
         self.startTime = startTime
-        self.endTime = endTime
         self.focusTime = focusTime
         self.quickStop = quickStop
         self.longStop = longStop
