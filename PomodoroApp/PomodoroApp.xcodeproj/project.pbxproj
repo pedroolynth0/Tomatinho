@@ -10,6 +10,7 @@
 		815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */; };
 		815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9122BD487DC00DD2ABE /* BluetoothView.swift */; };
 		815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */; };
+		81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0F0362BD593D700F42259 /* CustomAlertView.swift */; };
 		B77FD6AF2B9E0D400088A083 /* PomodoroAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */; };
 		B77FD6B32B9E0D420088A083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77FD6B22B9E0D420088A083 /* Assets.xcassets */; };
 		B77FD6B62B9E0D420088A083 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77FD6B52B9E0D420088A083 /* Preview Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		815BD9122BD487DC00DD2ABE /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
 		815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
+		81C0F0362BD593D700F42259 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		B77FD6AB2B9E0D400088A083 /* PomodoroApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroAppApp.swift; sourceTree = "<group>"; };
 		B77FD6B22B9E0D420088A083 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				B77FD6C32B9E10360088A083 /* TitleView.swift */,
 				B77FD6D32B9E1E440088A083 /* ButtonView.swift */,
 				B7E618E82BC5CD0B00DC49B6 /* TimeValue.swift */,
+				81C0F0362BD593D700F42259 /* CustomAlertView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				B7E618E62BC5AC5E00DC49B6 /* MainTabView.swift in Sources */,
 				815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */,
 				815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */,
+				81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */,
 				B79C8A772B9E34D8008979EF /* ConfigTimerViewModel.swift in Sources */,
 				B77FD6D42B9E1E440088A083 /* ButtonView.swift in Sources */,
 				B77FD6AF2B9E0D400088A083 /* PomodoroAppApp.swift in Sources */,

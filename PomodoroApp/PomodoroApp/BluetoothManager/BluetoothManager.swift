@@ -11,9 +11,11 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     @Published var isBluetoothEnabled = false
     @Published var discoveredPeripherals = [CBPeripheral]()
     @Published var receivedMessages = [String]()
+    @Published var isConnected = false
 
     private var centralManager: CBCentralManager!
     private var connectedPeripheral: CBPeripheral?
+    private let specificPeripheralName = "Tomatinho"
 
     override init() {
         super.init()
@@ -30,24 +32,32 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
-        if !discoveredPeripherals.contains(peripheral) {
+        if !discoveredPeripherals.contains(where: { $0.identifier == peripheral.identifier }) {
             discoveredPeripherals.append(peripheral)
         }
     }
 
-    func connectToPeripheral(named name: String) {
-        if let peripheral = discoveredPeripherals.first(where: { $0.name == name }) {
+    func connectToPeripheral() {
+        if let peripheral = discoveredPeripherals.first(where: { $0.name == specificPeripheralName }) {
             centralManager.connect(peripheral, options: nil)
             peripheral.delegate = self
         } else {
-            print("Erro ao encontrar dispositivo")
+            isConnected = false
         }
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         connectedPeripheral = peripheral
-        peripheral.delegate = self // Defina o delegado para receber atualizações
+        isConnected = (peripheral.name == specificPeripheralName) // Atualiza a variável
+        peripheral.delegate = self
         peripheral.discoverServices(nil) // Descobrir todos os serviços
+    }
+
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        if connectedPeripheral == peripheral {
+            connectedPeripheral = nil
+            isConnected = false // Atualiza a variável após desconexão
+        }
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
@@ -60,7 +70,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
         for characteristic in characteristics {
-           
             if characteristic.properties.contains(.read) || characteristic.properties.contains(.notify) {
                 peripheral.readValue(for: characteristic)
                 peripheral.setNotifyValue(true, for: characteristic)
@@ -87,4 +96,3 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
     }
 }
-

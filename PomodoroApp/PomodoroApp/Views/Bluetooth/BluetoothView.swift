@@ -18,7 +18,7 @@ struct BluetoothView: View {
                 .padding()
 
             Button(action: {
-                bluetoothManager.connectToPeripheral(named: viewModel.peripheralName)
+                bluetoothManager.connectToPeripheral()
             }) {
                 Text("Conectar ao dispositivo")
                     .padding()

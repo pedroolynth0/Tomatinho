@@ -14,17 +14,40 @@ struct AboutView: View {
                 .padding(.top, 29)
             text
             image
+                .padding(.top, 32)
             Spacer()
         }
         
     }
     
     var text: some View {
-        Text("A Técnica Pomodoro™ é um método de gestão do tempo desenvolvido por Francesco Cirillo no final da década de 1980. Consiste em períodos de 25 minutos  de   trabalho focado, interrompidos por intervalos de 5 minutos.  Após 04 intervalos de estudo consecutivos, são  feitos  intervalos mais longos, que podem variar de 15 a 30 minutos.")
-            .padding(EdgeInsets(top: 59, leading: 28, bottom: 38, trailing: 28))
-            .font(.custom("ZillaSlab-Regular", size: 14))
-            .foregroundStyle(Color(UIColor.mainColor.asColor))
-            .lineSpacing(10.0)
+        VStack(alignment: .leading, spacing: 16) {
+            Text("A ")
+                .foregroundStyle(Color(UIColor.mainColor.asColor))
+                .font(.custom("ZillaSlab-Regular", size: 16))
+            + Text("Técnica Pomodoro™ ")
+                .foregroundStyle(Color(UIColor.mainColor.asColor))
+                .font(.custom("ZillaSlab-Bold", size: 16))
+            + Text(" é um método de gestão do tempo desenvolvido por Francesco Cirillo no final da década de 1980. Consiste em períodos de ")
+                .foregroundStyle(Color(UIColor.mainColor.asColor))
+                .font(.custom("ZillaSlab-Regular", size: 16))
+            + Text("25 minutos ")
+                .foregroundStyle(Color(UIColor.mainColor.asColor))
+                .font(.custom("ZillaSlab-Bold", size: 16))
+            + Text("de trabalho focado, interrompidos por intervalos de ")
+                .foregroundStyle(Color(UIColor.mainColor.asColor))
+                .font(.custom("ZillaSlab-Regular", size: 16))
+            + Text("5 minutos.")
+                .foregroundStyle(Color(UIColor.mainColor.asColor))
+                .font(.custom("ZillaSlab-Bold", size: 16))
+
+
+            Text("Após 04 intervalos de estudo consecutivos, são feitos intervalos mais longos, que podem variar de 15 a 30 minutos.")
+                    .foregroundStyle(Color(UIColor.mainColor.asColor))
+                    .font(.custom("ZillaSlab-Regular", size: 16))
+        }
+        .padding(.top, 38)
+        .padding(.horizontal, 33)
     }
     
     var image: some View {
