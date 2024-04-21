@@ -16,7 +16,7 @@ class PomodoroViewFactory {
         case .aboutView:
             return AnyView(AboutView())
         case .historyView:
-            return AnyView(AboutView())
+            return AnyView(BluetoothView())
         case .timerView:
             return AnyView(ConfigTimerView())
         case .pomodoroView:

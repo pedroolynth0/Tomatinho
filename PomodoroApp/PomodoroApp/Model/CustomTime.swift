@@ -8,11 +8,11 @@
 import Foundation
 
 struct CustomTime: Codable {
-    let startTime: String
-    let focusTime: Int
-    let quickStop: Int
-    let longStop: Int
-    let rounds: Int
+    var startTime: String
+    var focusTime: Int
+    var quickStop: Int
+    var longStop: Int
+    var rounds: Int
     
     init(startTime: String, focusTime: Int, quickStop: Int, longStop: Int, rounds: Int) {
         self.startTime = startTime

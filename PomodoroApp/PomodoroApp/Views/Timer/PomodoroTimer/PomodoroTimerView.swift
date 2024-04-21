@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PomodoroTimerView: View {
-    @StateObject private var viewModel = PomodoroTimerViewModel(customTime: CustomTime(startTime: "08:00", focusTime: 10, quickStop: 10, longStop: 11, rounds: 4))
+    @StateObject private var viewModel = PomodoroTimerViewModel(customTime: CustomTime(startTime: "08:00", focusTime: 10 * 60, quickStop: 10 * 60 , longStop: 11, rounds: 1))
     
     var body: some View {
         

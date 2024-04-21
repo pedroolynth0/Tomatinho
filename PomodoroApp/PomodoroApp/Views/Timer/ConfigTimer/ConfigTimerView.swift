@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ConfigTimerView: View {
+    @EnvironmentObject var pomodoroFlow: PomodoroFlow
     @StateObject var viewModel = ConfigTimerViewModel()
+    @StateObject var bluetoothManager = BluetoothManager()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 90) {
@@ -24,7 +26,8 @@ struct ConfigTimerView: View {
         HStack {
             Spacer()
             Button(action: {
-                
+                bluetoothManager.sendData(pomodoroFlow.intListToData())
+                pomodoroFlow.saveTime(customTimer: viewModel.customTime)
             }) {
                 Image("play")
                     .foregroundStyle(Color.white)
@@ -39,10 +42,10 @@ struct ConfigTimerView: View {
     }
     var gridTimers: some View {
         VStack(spacing: 50) {
-            configItem(name: "Rounds", value: "\(viewModel.rounds)", subFunc: viewModel.removeRound, addFunc: viewModel.addRound)
-            configItem(name: "Tempo de Foco", value: "\(viewModel.focusTime.formattedData)", subFunc: viewModel.removeFocusTime, addFunc: viewModel.addFocusTime)
-            configItem(name: "Pausa Curta", value: "\(viewModel.quickStop.formattedData)", subFunc: viewModel.removeQuickStop, addFunc: viewModel.addQuickStop)
-            configItem(name: "Pausa Longa", value: "\(viewModel.longStop.formattedData)", subFunc: viewModel.removeLongStop, addFunc: viewModel.addLongStop)
+            configItem(name: "Rounds", value: "\(viewModel.customTime.rounds)", subFunc: viewModel.removeRound, addFunc: viewModel.addRound)
+            configItem(name: "Tempo de Foco", value: "\(viewModel.customTime.focusTime):00", subFunc: viewModel.removeFocusTime, addFunc: viewModel.addFocusTime)
+            configItem(name: "Pausa Curta", value: "\(viewModel.customTime.quickStop):00", subFunc: viewModel.removeQuickStop, addFunc: viewModel.addQuickStop)
+            configItem(name: "Pausa Longa", value: "\(viewModel.customTime.longStop):00", subFunc: viewModel.removeLongStop, addFunc: viewModel.addLongStop)
             
         }
     }

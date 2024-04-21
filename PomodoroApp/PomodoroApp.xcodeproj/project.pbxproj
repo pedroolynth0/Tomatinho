@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */; };
+		815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9122BD487DC00DD2ABE /* BluetoothView.swift */; };
+		815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */; };
 		B77FD6AF2B9E0D400088A083 /* PomodoroAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */; };
 		B77FD6B32B9E0D420088A083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77FD6B22B9E0D420088A083 /* Assets.xcassets */; };
 		B77FD6B62B9E0D420088A083 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77FD6B52B9E0D420088A083 /* Preview Assets.xcassets */; };
@@ -31,6 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		815BD9122BD487DC00DD2ABE /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
+		815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		B77FD6AB2B9E0D400088A083 /* PomodoroApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroAppApp.swift; sourceTree = "<group>"; };
 		B77FD6B22B9E0D420088A083 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		815BD90E2BD4871900DD2ABE /* BluetoothManager */ = {
+			isa = PBXGroup;
+			children = (
+				815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */,
+			);
+			path = BluetoothManager;
+			sourceTree = "<group>";
+		};
+		815BD9112BD487C400DD2ABE /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				815BD9122BD487DC00DD2ABE /* BluetoothView.swift */,
+				815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
 		B77FD6A22B9E0D400088A083 = {
 			isa = PBXGroup;
 			children = (
@@ -86,9 +109,10 @@
 		B77FD6AD2B9E0D400088A083 /* PomodoroApp */ = {
 			isa = PBXGroup;
 			children = (
+				815BD90E2BD4871900DD2ABE /* BluetoothManager */,
 				B7E618ED2BC5DD6400DC49B6 /* Model */,
 				B7E618EA2BC5DC8200DC49B6 /* DataManager */,
-				B77FD6BC2B9E0EAB0088A083 /* View */,
+				B77FD6BC2B9E0EAB0088A083 /* Views */,
 				B7E618DD2BC5A61400DC49B6 /* Navigation */,
 				B77FD6D02B9E18140088A083 /* Colors */,
 				B77FD6C52B9E139C0088A083 /* Font */,
@@ -107,15 +131,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B77FD6BC2B9E0EAB0088A083 /* View */ = {
+		B77FD6BC2B9E0EAB0088A083 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				815BD9112BD487C400DD2ABE /* Bluetooth */,
 				B77FD6BF2B9E0F0B0088A083 /* About */,
 				B77FD6BE2B9E0ECE0088A083 /* History */,
 				B77FD6BD2B9E0EB40088A083 /* Timer */,
 				B77FD6C22B9E100E0088A083 /* Shared */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B77FD6BD2B9E0EB40088A083 /* Timer */ = {
@@ -302,8 +327,11 @@
 				B7E618DF2BC5A64D00DC49B6 /* PomodoroNavigation.swift in Sources */,
 				B7E618F52BC5F4EB00DC49B6 /* PomodoroTimerViewModel.swift in Sources */,
 				B7E618F12BC5E38D00DC49B6 /* PomodoroTimerView.swift in Sources */,
+				815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */,
 				B77FD6D22B9E18280088A083 /* Colors.swift in Sources */,
 				B7E618E62BC5AC5E00DC49B6 /* MainTabView.swift in Sources */,
+				815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */,
+				815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */,
 				B79C8A772B9E34D8008979EF /* ConfigTimerViewModel.swift in Sources */,
 				B77FD6D42B9E1E440088A083 /* ButtonView.swift in Sources */,
 				B77FD6AF2B9E0D400088A083 /* PomodoroAppApp.swift in Sources */,
@@ -446,10 +474,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 3BAU9Z8SCU;
+				DEVELOPMENT_TEAM = J8J9A839Z5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -476,10 +506,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 3BAU9Z8SCU;
+				DEVELOPMENT_TEAM = J8J9A839Z5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
