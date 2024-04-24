@@ -11,7 +11,7 @@ struct ConfigTimerView: View {
     @EnvironmentObject var pomodoroFlow: PomodoroFlow
     @StateObject var viewModel = ConfigTimerViewModel()
     @StateObject var bluetoothManager = BluetoothManager()
-    @State private var showAlert = false
+    @State private var showAlert = true
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {

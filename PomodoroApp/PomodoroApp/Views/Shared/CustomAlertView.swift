@@ -45,7 +45,7 @@ struct CustomAlertView: View {
                         isPresented = false 
                     }) {
                         Text("Ok")
-                            .font(.custom("ZillaSlab-Bold", size: 20))
+                            .font(.custom("ZillaSlab-Bold", size: 16))
                             .foregroundStyle(Color(UIColor.mainColor.asColor))
                             .padding(8)
                     }
