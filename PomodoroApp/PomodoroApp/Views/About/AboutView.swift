@@ -10,7 +10,7 @@ import SwiftUI
 struct AboutView: View {
     var body: some View {
         VStack(alignment: .leading,spacing: 0){
-            TitleView(title: "Configuração Timer")
+            TitleView(title: "A Técnica Pomodoro")
                 .padding(.top, 29)
             text
             image

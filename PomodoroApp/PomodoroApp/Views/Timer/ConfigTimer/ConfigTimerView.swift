@@ -11,7 +11,7 @@ struct ConfigTimerView: View {
     @EnvironmentObject var pomodoroFlow: PomodoroFlow
     @StateObject var viewModel = ConfigTimerViewModel()
     @StateObject var bluetoothManager = BluetoothManager()
-    @State private var showAlert = true
+    @State private var showAlert = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
@@ -27,7 +27,7 @@ struct ConfigTimerView: View {
         }
         .overlay(
             CustomAlertView(title: "Conexão não efetuada", text: "Não foi possível conectar ao dispositivo. Tente novamente.", isPresented: $showAlert),
-            alignment: .center // Alinha ao centro da tela
+            alignment: .center 
         )
         .onAppear{
             bluetoothManager.connectToPeripheral()
@@ -38,12 +38,16 @@ struct ConfigTimerView: View {
         HStack {
             Spacer()
             Button(action: {
-                    bluetoothManager.sendData(pomodoroFlow.saveTime(customTimer: viewModel.customTime))
+                pomodoroFlow.saveTime(customTimer: viewModel.customTime)
+                if let data = pomodoroFlow.sendCustomTimer().data(using: .utf8) {
+                    bluetoothManager.sendData(data)
+                }
             }) {
-                Image("play")
+                Image(systemName: "play.fill")
+                    .resizable()
                     .foregroundStyle(Color.white)
-                    .frame(width: 43, height: 43)
-                    .padding(24)
+                    .frame(width: 25, height: 25)
+                    .padding(33)
                     .background(Color(UIColor.playButtonColor.asColor))
                     .clipShape(Circle())
             }

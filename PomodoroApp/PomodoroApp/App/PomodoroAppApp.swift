@@ -12,8 +12,7 @@ struct PomodoroAppApp: App {
     @StateObject var pomodoroFlow = PomodoroFlow()
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .environmentObject(pomodoroFlow)
+            TomatoView()
         }
     }
 }
