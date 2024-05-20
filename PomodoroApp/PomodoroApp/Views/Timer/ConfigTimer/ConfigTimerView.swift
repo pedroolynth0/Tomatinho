@@ -38,8 +38,7 @@ struct ConfigTimerView: View {
         HStack {
             Spacer()
             Button(action: {
-//                bluetoothManager.sendData(pomodoroFlow.intListToData())
-                pomodoroFlow.saveTime(customTimer: viewModel.customTime)
+                    bluetoothManager.sendData(pomodoroFlow.saveTime(customTimer: viewModel.customTime))
             }) {
                 Image("play")
                     .foregroundStyle(Color.white)

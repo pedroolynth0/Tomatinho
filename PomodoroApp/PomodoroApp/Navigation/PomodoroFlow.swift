@@ -41,8 +41,11 @@ class PomodoroFlow: ObservableObject {
     }
 
     
-    func saveTime(customTimer: CustomTime) {
+    func saveTime(customTimer: CustomTime) -> Data {
         self.customTimer = customTimer
+        let timer = "\(customTimer.rounds),\(customTimer.focusTime),\(customTimer.quickStop),\(customTimer.longStop)"
+        guard let data = timer.data(using: .utf8) else { return Data() }
+        return data
     }
     
     func navigateBackToRoot() {
