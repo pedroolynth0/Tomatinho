@@ -13,7 +13,8 @@ struct TitleView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 9) {
-                Image("icon")
+                Image("tomato")
+                    .resizable()
                     .imageScale(.large)
                     .foregroundStyle(.tint)
                     .frame(width: 33, height: 33)

@@ -18,31 +18,19 @@ class PomodoroFlow: ObservableObject {
         path = .init()
     }
     
-    func sendCustomTimer() -> [Int] {
-        var customTimerList: [Int] = []
-        customTimerList.append(customTimer.focusTime)
-        customTimerList.append(customTimer.quickStop)
-        customTimerList.append(customTimer.longStop)
-        customTimerList.append(customTimer.rounds)
-        
+    func sendCustomTimer() -> String {
+        var customTimerList: String = ""
+        customTimerList += ("\(customTimer.rounds),")
+        customTimerList += ("\(customTimer.focusTime),")
+        customTimerList += ("\(customTimer.quickStop),")
+        customTimerList += ("\(customTimer.longStop),")
+
         return customTimerList
     }
     
-    func intListToData() -> Data {
-        let intList = sendCustomTimer()
-        var data = Data()
-
-        for number in intList {
-            var littleEndianInt = UInt32(number).littleEndian // Certifique-se do formato Little Endian
-            data.append(Data(bytes: &littleEndianInt, count: MemoryLayout<UInt32>.size))
-        }
-
-        return data
-    }
-
-    
     func saveTime(customTimer: CustomTime) {
         self.customTimer = customTimer
+        DataManager.saveTimer(customTimer)
     }
     
     func navigateBackToRoot() {

@@ -18,7 +18,7 @@ class PomodoroViewFactory {
         case .historyView:
             return AnyView(BluetoothView())
         case .timerView:
-            return AnyView(ConfigTimerView())
+            return DataManager.loadTimer() != nil ? AnyView(PomodoroTimerView()) : AnyView(ConfigTimerView())
         case .pomodoroView:
             return AnyView(PomodoroTimerView())
         }

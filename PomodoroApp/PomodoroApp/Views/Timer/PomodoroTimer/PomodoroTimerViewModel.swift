@@ -8,6 +8,7 @@
 import SwiftUI
 
 class PomodoroTimerViewModel: ObservableObject {
+    var dataManager = DataManager()
     var customTime: CustomTime = CustomTime(startTime: "08:00", focusTime: 20, quickStop: 20, longStop: 20, rounds: 1)
     
     
@@ -18,7 +19,11 @@ class PomodoroTimerViewModel: ObservableObject {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     init(customTime: CustomTime) {
-        self.customTime = customTime
+        if let load = DataManager.loadTimer() {
+            self.customTime = load
+        } else {
+            self.customTime = customTime
+        }
         self.timeRemaining = CGFloat(customTime.focusTime)
         self.currentPhase = "Focus"
         self.currentRound = 1
