@@ -2,7 +2,7 @@
 //  PomodoroNavigation.swift
 //  PomodoroApp
 //
-//  Created by dti digital on 09/04/24.
+//  Created by Pedro Olyntho on 09/04/24.
 //
 
 import Foundation
