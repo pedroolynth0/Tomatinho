@@ -10,10 +10,10 @@ import SwiftUI
 
 class PomodoroFlow: ObservableObject {
     static let shared = PomodoroFlow()
-    var customTimer: CustomTime = CustomTime(startTime: "", focusTime: 1, quickStop: 1, longStop: 1, rounds: 1)
+    var customTimer: CustomTime = CustomTime(startTime: "", focusTime: 25, quickStop: 5, longStop: 30, rounds: 4)
     
     @Published var path = NavigationPath()
-    
+    @Published var isConnected = false
     func clear() {
         path = .init()
     }

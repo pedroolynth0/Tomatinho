@@ -29,8 +29,10 @@ struct ConfigTimerView: View {
             CustomAlertView(title: "Conexão não efetuada", text: "Não foi possível conectar ao dispositivo. Tente novamente.", isPresented: $showAlert),
             alignment: .center 
         )
-        .onAppear{
-            _ = bluetoothManager.connectToPeripheral()
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                showAlert = !bluetoothManager.connectToPeripheral()
+            }
         }
     }
     
@@ -38,9 +40,12 @@ struct ConfigTimerView: View {
         HStack {
             Spacer()
             Button(action: {
-                pomodoroFlow.saveTime(customTimer: viewModel.customTime)
-                if let data = pomodoroFlow.sendCustomTimer().data(using: .utf8) {
-                    bluetoothManager.sendData(data)
+                if bluetoothManager.isConnected {
+                    pomodoroFlow.customTimer = viewModel.customTime
+                    if let data = pomodoroFlow.sendCustomTimer().data(using: .utf8) {
+                        bluetoothManager.sendData(data)
+                        pomodoroFlow.saveTime(customTimer: viewModel.customTime)
+                    }
                 }
             }) {
                 Image(systemName: "play.fill")
@@ -60,7 +65,7 @@ struct ConfigTimerView: View {
         HStack {
             Spacer()
             Button(action: {
-                showAlert = bluetoothManager.connectToPeripheral()
+                showAlert = !bluetoothManager.connectToPeripheral()
             }) {
                 bluetoothText
             }

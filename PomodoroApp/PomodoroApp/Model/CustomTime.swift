@@ -48,7 +48,12 @@ struct CustomTime: Codable {
             let totalCycleTime = totalRoundTime * (self.rounds - 1) + focusTimeSeconds + longStopSeconds
             
             if totalSeconds >= totalCycleTime {
-                return ("Finished", "Todos os rounds foram concluidos!", 0, self.rounds)
+                do {
+                    try DataManager.clearCache()
+                } catch {
+                    print("Erro ao remover timer da memoria")
+                }
+                return ("Finished", "", 0, self.rounds)
             }
             
             var round = 1
