@@ -11,6 +11,8 @@
 		815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9122BD487DC00DD2ABE /* BluetoothView.swift */; };
 		815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */; };
 		81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0F0362BD593D700F42259 /* CustomAlertView.swift */; };
+		81DEDA132BFE80F100C79180 /* ChoosePomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEDA122BFE80F100C79180 /* ChoosePomodoroView.swift */; };
+		81DEDA182BFE872500C79180 /* ChooseTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEDA172BFE872500C79180 /* ChooseTimerViewModel.swift */; };
 		B70867022BDAEA190034296E /* TomatoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70867012BDAEA190034296E /* TomatoView.swift */; };
 		B77FD6AF2B9E0D400088A083 /* PomodoroAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */; };
 		B77FD6B32B9E0D420088A083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77FD6B22B9E0D420088A083 /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 		815BD9122BD487DC00DD2ABE /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
 		815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		81C0F0362BD593D700F42259 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		81DEDA122BFE80F100C79180 /* ChoosePomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePomodoroView.swift; sourceTree = "<group>"; };
+		81DEDA172BFE872500C79180 /* ChooseTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimerViewModel.swift; sourceTree = "<group>"; };
 		B70867012BDAEA190034296E /* TomatoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoView.swift; sourceTree = "<group>"; };
 		B77FD6AB2B9E0D400088A083 /* PomodoroApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroAppApp.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 				815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */,
 			);
 			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		81DEDA192BFE8EF800C79180 /* chooseView */ = {
+			isa = PBXGroup;
+			children = (
+				81DEDA172BFE872500C79180 /* ChooseTimerViewModel.swift */,
+				81DEDA122BFE80F100C79180 /* ChoosePomodoroView.swift */,
+			);
+			path = chooseView;
 			sourceTree = "<group>";
 		};
 		B70867032BDAF04F0034296E /* SplashView */ = {
@@ -159,6 +172,7 @@
 		B77FD6BD2B9E0EB40088A083 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				81DEDA192BFE8EF800C79180 /* chooseView */,
 				B7E618F32BC5F4C500DC49B6 /* PomodoroTimer */,
 				B7E618F22BC5F49A00DC49B6 /* ConfigTimer */,
 			);
@@ -341,6 +355,7 @@
 				B7E618DF2BC5A64D00DC49B6 /* PomodoroNavigation.swift in Sources */,
 				B7E618F52BC5F4EB00DC49B6 /* PomodoroTimerViewModel.swift in Sources */,
 				B7E618F12BC5E38D00DC49B6 /* PomodoroTimerView.swift in Sources */,
+				81DEDA182BFE872500C79180 /* ChooseTimerViewModel.swift in Sources */,
 				815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */,
 				B77FD6D22B9E18280088A083 /* Colors.swift in Sources */,
 				B7E618E62BC5AC5E00DC49B6 /* MainTabView.swift in Sources */,
@@ -348,6 +363,7 @@
 				815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */,
 				81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */,
 				B70867022BDAEA190034296E /* TomatoView.swift in Sources */,
+				81DEDA132BFE80F100C79180 /* ChoosePomodoroView.swift in Sources */,
 				B79C8A772B9E34D8008979EF /* ConfigTimerViewModel.swift in Sources */,
 				B77FD6D42B9E1E440088A083 /* ButtonView.swift in Sources */,
 				B77FD6AF2B9E0D400088A083 /* PomodoroAppApp.swift in Sources */,
@@ -490,7 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
-				DEVELOPMENT_TEAM = YJH6MBBG4A;
+				DEVELOPMENT_TEAM = J8J9A839Z5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
@@ -501,6 +517,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,7 +539,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
-				DEVELOPMENT_TEAM = YJH6MBBG4A;
+				DEVELOPMENT_TEAM = J8J9A839Z5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
@@ -533,6 +550,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

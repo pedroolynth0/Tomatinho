@@ -30,7 +30,7 @@ struct ConfigTimerView: View {
             alignment: .center 
         )
         .onAppear{
-            bluetoothManager.connectToPeripheral()
+            _ = bluetoothManager.connectToPeripheral()
         }
     }
     
@@ -60,7 +60,7 @@ struct ConfigTimerView: View {
         HStack {
             Spacer()
             Button(action: {
-                bluetoothManager.connectToPeripheral()
+                showAlert = bluetoothManager.connectToPeripheral()
             }) {
                 bluetoothText
             }

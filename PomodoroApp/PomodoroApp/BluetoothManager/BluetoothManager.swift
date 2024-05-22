@@ -37,13 +37,15 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
     }
 
-    func connectToPeripheral() {
+    func connectToPeripheral() -> Bool {
         if let peripheral = discoveredPeripherals.first(where: { $0.name == specificPeripheralName }) {
             centralManager.connect(peripheral, options: nil)
             peripheral.delegate = self
+            isConnected = true
         } else {
             isConnected = false
         }
+        return isConnected
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {

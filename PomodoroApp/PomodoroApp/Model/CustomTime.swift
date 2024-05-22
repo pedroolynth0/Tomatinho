@@ -21,4 +21,80 @@ struct CustomTime: Codable {
         self.longStop = longStop
         self.rounds = rounds
     }
+    
+    func getCurrentStageAndTime() -> (stage: String, remainingTimeFormated: String, remainingTime: Int, currentRound: Int) {
+        if startTime != "Nil" {
+            let focusTimeSeconds = self.focusTime * 60
+            let quickStopSeconds = self.quickStop * 60
+            let longStopSeconds = self.longStop * 60
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+            dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
+            
+            guard let start = dateFormatter.date(from: self.startTime) else {
+                return ("", "", 0, 0)
+            }
+            
+            let now = Date()
+            let totalSeconds = Int(now.timeIntervalSince(start))
+            
+            if totalSeconds < 0 {
+                return ("Error", "Start time is in the future", 0, 0)
+            }
+            
+            var remainingSeconds = totalSeconds
+            let totalRoundTime = focusTimeSeconds + quickStopSeconds
+            let totalCycleTime = totalRoundTime * (self.rounds - 1) + focusTimeSeconds + longStopSeconds
+            
+            if totalSeconds >= totalCycleTime {
+                return ("Finished", "Todos os rounds foram concluidos!", 0, self.rounds)
+            }
+            
+            var round = 1
+            while remainingSeconds >= totalRoundTime {
+                remainingSeconds -= totalRoundTime
+                round += 1
+            }
+            
+            if remainingSeconds < focusTimeSeconds {
+                let focusTimeLeft = focusTimeSeconds - remainingSeconds
+                if focusTimeLeft % 60 < 10 {
+                    return ("Foco", "\(focusTimeLeft / 60):0\(focusTimeLeft % 60)", focusTimeLeft, round)
+                } else {
+                    return ("Foco", "\(focusTimeLeft / 60):\(focusTimeLeft % 60)", focusTimeLeft, round)
+                }
+                
+            } else  if round < rounds {
+                let breakTime = totalRoundTime - remainingSeconds
+                if breakTime % 60 < 10 {
+                    return ("Short Break", "\(breakTime / 60):0\(breakTime % 60)", breakTime, round)
+                } else {
+                    return ("Short Break", "\(breakTime / 60):\(breakTime % 60)", breakTime, round)
+                }
+            } else {
+                let breakTime = longStopSeconds - remainingSeconds
+                if breakTime % 60 < 10 {
+                    return ("Long Break", "\(breakTime / 60):0\(breakTime % 60)", breakTime, round)
+                } else {
+                    return ("Long Break", "\(breakTime / 60):\(breakTime % 60)", breakTime, round)
+                }
+            }
+        } else {
+            return ("", "Timer \n Config", 0, 0)
+        }
+    }
+    
+    func stringToInt(_ input: String) -> Int {
+        switch input {
+        case "Foco":
+            return focusTime * 60
+        case "Short Break":
+            return quickStop * 60
+        case "Long Break":
+            return longStop * 60
+        default:
+            return 0
+        }
+    }
 }

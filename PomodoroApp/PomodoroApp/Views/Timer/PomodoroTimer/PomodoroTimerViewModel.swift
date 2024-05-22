@@ -2,70 +2,57 @@
 //  PomodoroTimerViewModel.swift
 //  PomodoroApp
 //
-//  Created by dti digital on 09/04/24.
+//  Created by Pedro Olyntho on 09/04/24.
 //
 
 import SwiftUI
 
 class PomodoroTimerViewModel: ObservableObject {
-    var dataManager = DataManager()
-    var customTime: CustomTime = CustomTime(startTime: "08:00", focusTime: 20, quickStop: 20, longStop: 20, rounds: 1)
-    
-    
     @Published var timeRemaining: CGFloat = 0
-    @Published var currentTime: CGFloat
     @Published var currentPhase: String
-    @Published var currentRound: Int
+    
+    var dataManager = DataManager()
+    var customTime: CustomTime = CustomTime(startTime: "08:00", focusTime: 1, quickStop: 20, longStop: 20, rounds: 1)
+    var result = (stage: "", remainingTimeFormated: "", remainingTime: 0, currentRound: 0)
+    
+
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
-    init(customTime: CustomTime) {
-        if let load = DataManager.loadTimer() {
-            self.customTime = load
-        } else {
-            self.customTime = customTime
-        }
+    init() {
         self.timeRemaining = CGFloat(customTime.focusTime)
         self.currentPhase = "Focus"
-        self.currentRound = 1
-        self.currentTime = CGFloat(customTime.focusTime)
+        loadTimer()
+        updateTimer()
     }
     
-    func convertToSec(timeValue: TimeValue) -> CGFloat {
-       return CGFloat(timeValue.minutes * 60) + CGFloat(timeValue.seconds)
-    }
-    
-    func timeFormatted(from totalSeconds: CGFloat) -> String {
-        let totalSecondsInt = Int(totalSeconds)
-        let minutes = totalSecondsInt / 60
-        let seconds = totalSecondsInt % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+    func updateTimer() {
+        result = customTime.getCurrentStageAndTime()
+        timeRemaining = CGFloat(result.remainingTime)
+        currentPhase = result.stage
     }
 
     func totalTimeCompleted() -> CGFloat {
-        return timeRemaining / currentTime
+        return timeRemaining / CGFloat(customTime.stringToInt(currentPhase))
     }
-    
     
     func tick() {
-        timeRemaining > 0 ? timeRemaining -= 1 : switchToNextPhase()
+        updateTimer()
     }
     
-    func switchToNextPhase() {
-        if currentPhase == "Focus" {
-            if currentRound % customTime.rounds == 0 {
-                currentPhase = "Long Break"
-                timeRemaining = CGFloat(customTime.longStop)
-                self.currentTime = CGFloat(customTime.longStop)
-            } else {
-                currentPhase = "Short Break"
-                timeRemaining = CGFloat(customTime.quickStop)
-                self.currentTime = CGFloat(customTime.quickStop)
-            }
+    func loadTimer() {
+        if let load = DataManager.loadTimer() {
+            self.customTime = load
         } else {
-            currentPhase = "Focus"
-            timeRemaining = CGFloat(customTime.focusTime)
-            self.currentTime = CGFloat(customTime.focusTime)
-            currentRound += 1
+            self.customTime = CustomTime(startTime: "Nil", focusTime: 0, quickStop: 0, longStop: 0, rounds: 0)
+        }
+    }
+    
+    func removeTimer() {
+        do {
+            try DataManager.clearCache()
+            loadTimer()
+        } catch {
+            
         }
     }
 

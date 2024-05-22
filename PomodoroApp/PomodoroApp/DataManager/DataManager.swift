@@ -31,6 +31,7 @@ struct DataManager {
     
     static func clearCache() throws {
         try FileManager.default.removeItem(at: archiveURL)
+        timerDidChange.send()
     }
     
     

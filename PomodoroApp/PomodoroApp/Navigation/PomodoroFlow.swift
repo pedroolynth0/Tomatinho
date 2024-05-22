@@ -10,7 +10,7 @@ import SwiftUI
 
 class PomodoroFlow: ObservableObject {
     static let shared = PomodoroFlow()
-    var customTimer: CustomTime = CustomTime(startTime: "08:00", focusTime: 25, quickStop: 5, longStop: 30, rounds: 4)
+    var customTimer: CustomTime = CustomTime(startTime: "", focusTime: 1, quickStop: 1, longStop: 1, rounds: 1)
     
     @Published var path = NavigationPath()
     
@@ -28,9 +28,18 @@ class PomodoroFlow: ObservableObject {
         return customTimerList
     }
     
+    func formatDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "pt_BR")
+        dateFormatter.timeZone = TimeZone(identifier: "America/Sao_Paulo")
+        return dateFormatter.string(from: Date())
+    }
+    
     func saveTime(customTimer: CustomTime) {
         self.customTimer = customTimer
-        DataManager.saveTimer(customTimer)
+        self.customTimer.startTime = formatDate()
+        DataManager.saveTimer(self.customTimer)
     }
     
     func navigateBackToRoot() {
