@@ -19,14 +19,14 @@ struct MainTabView: View {
                     }
                     .environmentObject(pomodoroFlow)
                 
-                PomodoroViewFactory.setViewForDestination(.aboutView)
+                PomodoroViewFactory.setViewForDestination(.historyView)
                     .tabItem {
                         Label("History", systemImage: "text.book.closed.fill")
                     }
 
                     .environmentObject(pomodoroFlow)
                 
-                PomodoroViewFactory.setViewForDestination(.pomodoroView)
+                PomodoroViewFactory.setViewForDestination(.aboutView)
                     .tabItem {
                         Label("About", systemImage: "plus.magnifyingglass")
                     }

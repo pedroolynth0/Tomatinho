@@ -49,6 +49,8 @@ struct CustomTime: Codable {
             
             if totalSeconds >= totalCycleTime {
                 do {
+                    guard let timer = DataManager.loadTimer() else { return ("Finished", "", 0, self.rounds)}
+                    DataManager.addTimerToHistory(timer)
                     try DataManager.clearCache()
                 } catch {
                     print("Erro ao remover timer da memoria")

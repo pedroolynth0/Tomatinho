@@ -11,6 +11,10 @@
 		815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9122BD487DC00DD2ABE /* BluetoothView.swift */; };
 		815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */; };
 		81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0F0362BD593D700F42259 /* CustomAlertView.swift */; };
+		81D286AB2BFF566B00713F26 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D286AA2BFF566B00713F26 /* BarChartView.swift */; };
+		81D286AD2BFF82CA00713F26 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D286AC2BFF82CA00713F26 /* HistoryView.swift */; };
+		81D286AF2BFFCDA100713F26 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D286AE2BFFCDA100713F26 /* HistoryViewModel.swift */; };
+		81D286B12BFFCDF300713F26 /* StudyDataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D286B02BFFCDF300713F26 /* StudyDataPoint.swift */; };
 		81DEDA132BFE80F100C79180 /* ChoosePomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEDA122BFE80F100C79180 /* ChoosePomodoroView.swift */; };
 		81DEDA182BFE872500C79180 /* ChooseTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DEDA172BFE872500C79180 /* ChooseTimerViewModel.swift */; };
 		B70867022BDAEA190034296E /* TomatoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70867012BDAEA190034296E /* TomatoView.swift */; };
@@ -42,6 +46,10 @@
 		815BD9122BD487DC00DD2ABE /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
 		815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		81C0F0362BD593D700F42259 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		81D286AA2BFF566B00713F26 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		81D286AC2BFF82CA00713F26 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryView.swift; path = PomodoroApp/Views/BarChart/HistoryView.swift; sourceTree = SOURCE_ROOT; };
+		81D286AE2BFFCDA100713F26 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryViewModel.swift; path = PomodoroApp/Views/BarChart/HistoryViewModel.swift; sourceTree = SOURCE_ROOT; };
+		81D286B02BFFCDF300713F26 /* StudyDataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDataPoint.swift; sourceTree = "<group>"; };
 		81DEDA122BFE80F100C79180 /* ChoosePomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePomodoroView.swift; sourceTree = "<group>"; };
 		81DEDA172BFE872500C79180 /* ChooseTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimerViewModel.swift; sourceTree = "<group>"; };
 		B70867012BDAEA190034296E /* TomatoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoView.swift; sourceTree = "<group>"; };
@@ -96,6 +104,15 @@
 				815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */,
 			);
 			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		81D286A92BFF564300713F26 /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				81D286AA2BFF566B00713F26 /* BarChartView.swift */,
+				81D286B02BFFCDF300713F26 /* StudyDataPoint.swift */,
+			);
+			path = BarChart;
 			sourceTree = "<group>";
 		};
 		81DEDA192BFE8EF800C79180 /* chooseView */ = {
@@ -159,6 +176,7 @@
 		B77FD6BC2B9E0EAB0088A083 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				81D286A92BFF564300713F26 /* BarChart */,
 				B70867032BDAF04F0034296E /* SplashView */,
 				815BD9112BD487C400DD2ABE /* Bluetooth */,
 				B77FD6BF2B9E0F0B0088A083 /* About */,
@@ -182,6 +200,8 @@
 		B77FD6BE2B9E0ECE0088A083 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				81D286AC2BFF82CA00713F26 /* HistoryView.swift */,
+				81D286AE2BFFCDA100713F26 /* HistoryViewModel.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -355,11 +375,14 @@
 				B7E618DF2BC5A64D00DC49B6 /* PomodoroNavigation.swift in Sources */,
 				B7E618F52BC5F4EB00DC49B6 /* PomodoroTimerViewModel.swift in Sources */,
 				B7E618F12BC5E38D00DC49B6 /* PomodoroTimerView.swift in Sources */,
+				81D286B12BFFCDF300713F26 /* StudyDataPoint.swift in Sources */,
 				81DEDA182BFE872500C79180 /* ChooseTimerViewModel.swift in Sources */,
 				815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */,
+				81D286AD2BFF82CA00713F26 /* HistoryView.swift in Sources */,
 				B77FD6D22B9E18280088A083 /* Colors.swift in Sources */,
 				B7E618E62BC5AC5E00DC49B6 /* MainTabView.swift in Sources */,
 				815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */,
+				81D286AF2BFFCDA100713F26 /* HistoryViewModel.swift in Sources */,
 				815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */,
 				81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */,
 				B70867022BDAEA190034296E /* TomatoView.swift in Sources */,
@@ -373,6 +396,7 @@
 				B7E618E92BC5CD0B00DC49B6 /* TimeValue.swift in Sources */,
 				B7E618EC2BC5DCA000DC49B6 /* DataManager.swift in Sources */,
 				B77FD6C42B9E10360088A083 /* TitleView.swift in Sources */,
+				81D286AB2BFF566B00713F26 /* BarChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

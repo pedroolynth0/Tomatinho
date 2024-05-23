@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AboutView: View {
     var body: some View {
-        VStack(alignment: .leading,spacing: 0){
+        VStack(spacing: 0) {
+            
             TitleView(title: "A Técnica Pomodoro")
                 .padding(.top, 29)
             text
@@ -55,7 +56,6 @@ struct AboutView: View {
             .resizable()
             .scaledToFit()
             .frame(width: 333)
-            .padding(.leading, 28)
     }
 }
 
