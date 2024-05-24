@@ -11,7 +11,7 @@ class ConfigTimerViewModel: ObservableObject {
     @Published var customTime: CustomTime = CustomTime(startTime: "\(Date())", focusTime: 25, quickStop: 5, longStop: 30, rounds: 4)
     
     func removeRound() {
-        self.customTime.rounds = max(0, customTime.rounds - 1)
+        self.customTime.rounds = max(1, customTime.rounds - 1)
     }
     
     func addRound() {
@@ -24,7 +24,7 @@ class ConfigTimerViewModel: ObservableObject {
     }
     
     func removeFocusTime() {
-        customTime.focusTime = max(0, customTime.focusTime - 1)
+        customTime.focusTime = max(1, customTime.focusTime - 1)
         objectWillChange.send()
     }
 
@@ -34,7 +34,7 @@ class ConfigTimerViewModel: ObservableObject {
     }
     
     func removeQuickStop() {
-        customTime.quickStop = max(0, customTime.quickStop - 1)
+        customTime.quickStop = max(1, customTime.quickStop - 1)
         objectWillChange.send()
     }
 
@@ -44,7 +44,7 @@ class ConfigTimerViewModel: ObservableObject {
     }
     
     func removeLongStop() {
-        customTime.longStop = max(0, customTime.longStop - 1)
+        customTime.longStop = max(1, customTime.longStop - 1)
         objectWillChange.send()
     }
     

@@ -19,6 +19,7 @@ struct AboutView: View {
             Spacer()
         }
         
+        
     }
     
     var text: some View {

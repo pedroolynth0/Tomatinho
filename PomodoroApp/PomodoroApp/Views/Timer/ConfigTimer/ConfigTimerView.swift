@@ -12,6 +12,7 @@ struct ConfigTimerView: View {
     @StateObject var viewModel = ConfigTimerViewModel()
     @StateObject var bluetoothManager = BluetoothManager()
     @State private var showAlert = false
+    @State private var showAlertStartError = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
@@ -29,9 +30,13 @@ struct ConfigTimerView: View {
             CustomAlertView(title: "Conexão não efetuada", text: "Não foi possível conectar ao dispositivo. Tente novamente.", isPresented: $showAlert),
             alignment: .center 
         )
+        .overlay(
+            CustomAlertView(title: "Não foi possível criar os timers!", text: "Dispositivo desconectado. Realize a conexão bluetooth.", isPresented: $showAlertStartError),
+            alignment: .center
+        )
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                showAlert = !bluetoothManager.connectToPeripheral()
+                _ = !bluetoothManager.connectToPeripheral()
             }
         }
     }
@@ -46,6 +51,8 @@ struct ConfigTimerView: View {
                         bluetoothManager.sendData(data)
                         pomodoroFlow.saveTime(customTimer: viewModel.customTime)
                     }
+                } else {
+                    showAlertStartError = true
                 }
             }) {
                 Image(systemName: "play.fill")

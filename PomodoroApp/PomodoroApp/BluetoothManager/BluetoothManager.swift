@@ -28,6 +28,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             centralManager.scanForPeripherals(withServices: nil, options: nil)
         } else {
             isBluetoothEnabled = false
+            isConnected = false
         }
     }
 
@@ -38,12 +39,16 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     }
 
     func connectToPeripheral() -> Bool {
-        if let peripheral = discoveredPeripherals.first(where: { $0.name == specificPeripheralName }) {
-            centralManager.connect(peripheral, options: nil)
-            peripheral.delegate = self
-            isConnected = true
-        } else {
+        if centralManager.state == .poweredOff {
             isConnected = false
+        } else {
+            if let peripheral = discoveredPeripherals.first(where: { $0.name == specificPeripheralName }) {
+                centralManager.connect(peripheral, options: nil)
+                peripheral.delegate = self
+                isConnected = true
+            } else {
+                isConnected = false
+            }
         }
         return isConnected
     }

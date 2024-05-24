@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import Combine
 
 class HistoryViewModel: ObservableObject {
     var timers: [CustomTime]
+    private var cancellables = Set<AnyCancellable>()
     @Published var filterTimers: [CustomTime] = []
     @Published var formatedTimers: [StudyDataPoint] = []
     @Published var totalTime: String = ""
     @Published var breakTime: String = ""
     @Published var focusTime: String = ""
     @Published var daily: Bool = false
+    
 
     init() {
         self.timers = []
@@ -23,6 +26,15 @@ class HistoryViewModel: ObservableObject {
         filterTimersForTodayOrWeek()
         formatTotalTime()
         formatTimer()
+        observeRecipeChanges()
+    }
+    
+    private func observeRecipeChanges() {
+        DataManager.historyDidChange
+            .sink { [weak self] _ in
+                self?.updateChart()
+            }
+            .store(in: &cancellables)
     }
     
     func formatTimer() {

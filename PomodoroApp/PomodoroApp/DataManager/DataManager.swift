@@ -83,4 +83,13 @@ struct DataManager {
             return nil
         }
     }
+    
+    static func clearHistory() {
+        do {
+            try FileManager.default.removeItem(at: historyURL)
+        } catch {
+            print("Não foi possivel apagar o historico")
+        }
+        timerDidChange.send()
+    }
 }
