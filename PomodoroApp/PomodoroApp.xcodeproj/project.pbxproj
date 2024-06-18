@@ -53,7 +53,7 @@
 		81DEDA122BFE80F100C79180 /* ChoosePomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePomodoroView.swift; sourceTree = "<group>"; };
 		81DEDA172BFE872500C79180 /* ChooseTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTimerViewModel.swift; sourceTree = "<group>"; };
 		B70867012BDAEA190034296E /* TomatoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomatoView.swift; sourceTree = "<group>"; };
-		B77FD6AB2B9E0D400088A083 /* PomodoroApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomodoroApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77FD6AB2B9E0D400088A083 /* Tomatinho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomatinho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B77FD6AE2B9E0D400088A083 /* PomodoroAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomodoroAppApp.swift; sourceTree = "<group>"; };
 		B77FD6B22B9E0D420088A083 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B77FD6B52B9E0D420088A083 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		B77FD6AC2B9E0D400088A083 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B77FD6AB2B9E0D400088A083 /* PomodoroApp.app */,
+				B77FD6AB2B9E0D400088A083 /* Tomatinho.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,9 +300,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B77FD6AA2B9E0D400088A083 /* PomodoroApp */ = {
+		B77FD6AA2B9E0D400088A083 /* Tomatinho */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B77FD6B92B9E0D420088A083 /* Build configuration list for PBXNativeTarget "PomodoroApp" */;
+			buildConfigurationList = B77FD6B92B9E0D420088A083 /* Build configuration list for PBXNativeTarget "Tomatinho" */;
 			buildPhases = (
 				B77FD6A72B9E0D400088A083 /* Sources */,
 				B77FD6A82B9E0D400088A083 /* Frameworks */,
@@ -312,9 +312,9 @@
 			);
 			dependencies = (
 			);
-			name = PomodoroApp;
+			name = Tomatinho;
 			productName = PomodoroApp;
-			productReference = B77FD6AB2B9E0D400088A083 /* PomodoroApp.app */;
+			productReference = B77FD6AB2B9E0D400088A083 /* Tomatinho.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -345,7 +345,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B77FD6AA2B9E0D400088A083 /* PomodoroApp */,
+				B77FD6AA2B9E0D400088A083 /* Tomatinho */,
 			);
 		};
 /* End PBXProject section */
@@ -530,7 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
-				DEVELOPMENT_TEAM = J8J9A839Z5;
+				DEVELOPMENT_TEAM = 3BAU9Z8SCU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
@@ -563,7 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PomodoroApp/Preview Content\"";
-				DEVELOPMENT_TEAM = J8J9A839Z5;
+				DEVELOPMENT_TEAM = 3BAU9Z8SCU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PomodoroApp/Info.plist;
@@ -600,7 +600,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B77FD6B92B9E0D420088A083 /* Build configuration list for PBXNativeTarget "PomodoroApp" */ = {
+		B77FD6B92B9E0D420088A083 /* Build configuration list for PBXNativeTarget "Tomatinho" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B77FD6BA2B9E0D420088A083 /* Debug */,

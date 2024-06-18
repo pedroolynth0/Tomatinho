@@ -18,8 +18,6 @@ struct AboutView: View {
                 .padding(.top, 32)
             Spacer()
         }
-        
-        
     }
     
     var text: some View {
