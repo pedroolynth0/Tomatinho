@@ -59,7 +59,7 @@ struct CustomTime: Codable {
             }
             
             var round = 1
-            while remainingSeconds >= totalRoundTime {
+            while remainingSeconds >= totalRoundTime  && totalRoundTime != 0 {
                 remainingSeconds -= totalRoundTime
                 round += 1
             }
@@ -80,7 +80,7 @@ struct CustomTime: Codable {
                     return ("Short Break", "\(breakTime / 60):\(breakTime % 60)", breakTime, round)
                 }
             } else {
-                let breakTime = longStopSeconds - remainingSeconds
+                let breakTime =  longStopSeconds - remainingSeconds + 60
                 if breakTime % 60 < 10 {
                     return ("Long Break", "\(breakTime / 60):0\(breakTime % 60)", breakTime, round)
                 } else {

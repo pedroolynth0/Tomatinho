@@ -22,7 +22,7 @@ struct PomodoroTimerView: View {
                 circles
                     .frame(width: 350)
                 Spacer()
-                Button("remove Timer", action: viewModel.removeTimer)
+//                Button("remove Timer", action: viewModel.removeTimer)
                 
             }
             .overlay(
