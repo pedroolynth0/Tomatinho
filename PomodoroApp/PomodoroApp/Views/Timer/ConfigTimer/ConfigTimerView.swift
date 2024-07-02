@@ -100,7 +100,7 @@ struct ConfigTimerView: View {
                 .font(.custom("ZillaSlab-Bold", size: 18))
                 .padding(.vertical, 6)
                 .padding(.horizontal, 16 )
-                .background(Color(UIColor.whiteButton.asColor))
+                .background(Color(UIColor.whiteButtonColor.asColor))
                 .cornerRadius(50)
                 .overlay(
                      RoundedRectangle(cornerRadius: 50)

@@ -14,7 +14,7 @@ public extension UIColor {
     static let mainColor = colorFromAsset(.mainColor)
     static let buttonColor = colorFromAsset(.buttonColor)
     static let playButtonColor = colorFromAsset(.playButtonColor)
-    static let whiteButton = colorFromAsset(.whitebutton)
+    static let whiteButtonColor = colorFromAsset(.whitebutton)
     static let connectColor = colorFromAsset(.connectcolor)
     static let customRed = colorFromAsset(.customred)
 
