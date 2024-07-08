@@ -43,7 +43,7 @@ struct HistoryView: View {
                     .font(.custom("ZillaSlab-Bold", size: 18))
                     .padding(.vertical, 6)
                     .padding(.horizontal, 16 )
-                    .background(isSelected ? Color(UIColor.connectcolor.asColor) : Color(UIColor.whiteButton.asColor))
+                    .background(isSelected ? Color(UIColor.connectcolor.asColor) : Color(UIColor.whitebutton.asColor))
                     .cornerRadius(50)
                     .overlay(
                          RoundedRectangle(cornerRadius: 50)
