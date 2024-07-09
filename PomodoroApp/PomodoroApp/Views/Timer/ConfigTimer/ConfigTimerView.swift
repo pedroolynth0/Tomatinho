@@ -15,16 +15,20 @@ struct ConfigTimerView: View {
     @State private var showAlertStartError = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 45) {
+        
             TitleView(title: "Configuração do Timer")
                 .padding(.top, 29)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 45) {
 
-            bluetoothButton
-
-            gridTimers
-
-            button
-            Spacer()
+                
+                bluetoothButton
+                
+                gridTimers
+                
+                button
+                Spacer()
+            }
         }
         .overlay(
             CustomAlertView(title: "Conexão não efetuada", text: "Não foi possível conectar ao dispositivo. Tente novamente.", isPresented: $showAlert),

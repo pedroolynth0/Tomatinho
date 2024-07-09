@@ -23,15 +23,17 @@ struct HistoryView: View {
                         .padding(.leading, 18)
                 }
             }
-            HStack {
-                chartTitle
+            ScrollView {
+                HStack {
+                    chartTitle
+                    Spacer()
+                }
+                grid
+                    .frame(width: 400)
+                
+                BarChartView(studyDataPoints: $viewModel.formatedTimers)
                 Spacer()
             }
-            grid
-                .frame(width: 400)
-            
-            BarChartView(studyDataPoints: $viewModel.formatedTimers)
-            Spacer()
         }
     }
     

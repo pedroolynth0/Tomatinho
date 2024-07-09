@@ -88,7 +88,7 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         if let value = characteristic.value, let message = String(data: value, encoding: .utf8) {
             receivedMessages.append(message) // Armazena a mensagem recebida
             print("Mensagem recebida: \(message)")
-            if message == "0" {
+            if message == "0" || message == "" {
                 do {
                     try DataManager.clearCache();
                 } catch {

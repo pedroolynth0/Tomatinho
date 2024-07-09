@@ -13,10 +13,12 @@ struct AboutView: View {
             
             TitleView(title: "A Técnica Pomodoro")
                 .padding(.top, 29)
-            text
-            image
-                .padding(.top, 32)
-            Spacer()
+            ScrollView {
+                text
+                image
+                    .padding(.top, 32)
+                Spacer()
+            }
         }
     }
     
