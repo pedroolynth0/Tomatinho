@@ -14,9 +14,8 @@ public extension UIColor {
     static let mainColor = colorFromAsset(.mainColor)
     static let buttonColor = colorFromAsset(.buttonColor)
     static let playButtonColor = colorFromAsset(.playButtonColor)
-    static let whiteButtonColor = colorFromAsset(.whitebutton)
-    static let connectColor = colorFromAsset(.connectcolor)
-    static let customRed = colorFromAsset(.customred)
+    static let whiteButtonColor = colorFromAsset(.whiteButton)
+    static let connectColor = colorFromAsset(.connectColor)
 
     /// UIColor to SwiftUI Color
     var asColor: Color { Color(self) }
@@ -37,9 +36,8 @@ private extension UIColor {
         case mainColor = "mainColor"
         case buttonColor = "buttonColor"
         case playButtonColor = "playButtonColor"
-        case whitebutton = "whitebutton"
-        case connectcolor = "connectcolor"
-        case customred = "customred"
+        case whiteButton = "whiteButton"
+        case connectColor = "connectColor"
     }
 }
 

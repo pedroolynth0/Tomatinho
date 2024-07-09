@@ -103,7 +103,7 @@ struct PomodoroTimerView: View {
                 .font(.custom("ZillaSlab-Bold", size: 18))
                 .padding(.vertical, 6)
                 .padding(.horizontal, 16 )
-                .background(Color(UIColor.connectcolor.asColor))
+                .background(Color(UIColor.connectColor.asColor))
                 .cornerRadius(50)
                 .overlay(
                      RoundedRectangle(cornerRadius: 50)

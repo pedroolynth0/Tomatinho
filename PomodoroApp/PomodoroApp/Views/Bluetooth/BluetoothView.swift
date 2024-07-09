@@ -18,7 +18,7 @@ struct BluetoothView: View {
                 .padding()
 
             Button(action: {
-                bluetoothManager.connectToPeripheral()
+               _ = bluetoothManager.connectToPeripheral()
             }) {
                 Text("Conectar ao dispositivo")
                     .padding()
@@ -30,7 +30,7 @@ struct BluetoothView: View {
 
             Button(action: {
                 if let data = viewModel.messageToSend.data(using: .utf8) {
-                    bluetoothManager.sendData(data)
+                 _ = bluetoothManager.sendData(data)
                 }
             }) {
                 Text("Enviar Mensagem")
