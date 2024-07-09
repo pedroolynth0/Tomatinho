@@ -15,19 +15,19 @@ struct ConfigTimerView: View {
     @State private var showAlertStartError = false
     
     var body: some View {
-        
+        VStack {
             TitleView(title: "Configuração do Timer")
                 .padding(.top, 29)
-        ScrollView {
-            VStack(alignment: .leading, spacing: 45) {
-
-                
-                bluetoothButton
-                
-                gridTimers
-                
-                button
-                Spacer()
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 45) {
+                    bluetoothButton
+                    
+                    gridTimers
+                    
+                    button
+                    Spacer()
+                }
             }
         }
         .overlay(
@@ -40,7 +40,7 @@ struct ConfigTimerView: View {
         )
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                _ = !bluetoothManager.connectToPeripheral()
+                _ = bluetoothManager.connectToPeripheral()
             }
         }
     }
@@ -52,8 +52,11 @@ struct ConfigTimerView: View {
                 if bluetoothManager.isConnected {
                     pomodoroFlow.customTimer = viewModel.customTime
                     if let data = pomodoroFlow.sendCustomTimer().data(using: .utf8) {
-                        bluetoothManager.sendData(data)
-                        pomodoroFlow.saveTime(customTimer: viewModel.customTime)
+                        if !bluetoothManager.sendData(data) {
+                            pomodoroFlow.saveTime(customTimer: viewModel.customTime)
+                        } else {
+                            showAlertStartError = true
+                        }
                     }
                 } else {
                     showAlertStartError = true

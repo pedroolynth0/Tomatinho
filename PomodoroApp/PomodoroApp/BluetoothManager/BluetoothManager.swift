@@ -6,6 +6,7 @@
 //
 
 import CoreBluetooth
+import UIKit
 
 class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, ObservableObject {
     @Published var isBluetoothEnabled = false
@@ -14,12 +15,13 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     @Published var isConnected = false
 
     private var centralManager: CBCentralManager!
-    private var connectedPeripheral: CBPeripheral?
+    var connectedPeripheral: CBPeripheral?
     private let specificPeripheralName = "Tomatinho"
 
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
+        setupAppStateObservers()
     }
 
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -29,9 +31,29 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         } else {
             isBluetoothEnabled = false
             isConnected = false
+            connectedPeripheral = nil
         }
     }
 
+    
+    private func setupAppStateObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc private func appWillResignActive() {
+        if let peripheral = connectedPeripheral {
+            centralManager.cancelPeripheralConnection(peripheral)
+            connectedPeripheral = nil
+            isConnected = false
+        }
+    }
+
+    @objc private func appDidBecomeActive() {
+        isConnected = connectToPeripheral()
+    }
+
+    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         if !discoveredPeripherals.contains(where: { $0.identifier == peripheral.identifier }) {
             discoveredPeripherals.append(peripheral)
@@ -40,16 +62,16 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
 
     func connectToPeripheral() -> Bool {
         if centralManager.state == .poweredOff {
-            isConnected = false
+            connectedPeripheral = nil
         } else {
             if let peripheral = discoveredPeripherals.first(where: { $0.name == specificPeripheralName }) {
                 centralManager.connect(peripheral, options: nil)
                 peripheral.delegate = self
-                isConnected = true
             } else {
                 isConnected = false
             }
         }
+        isConnected = connectedPeripheral?.name == "Tomatinho"
         return isConnected
     }
 
@@ -87,7 +109,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let value = characteristic.value, let message = String(data: value, encoding: .utf8) {
             receivedMessages.append(message) // Armazena a mensagem recebida
-            print("Mensagem recebida: \(message)")
             if message == "0" || message == "" {
                 do {
                     try DataManager.clearCache();
@@ -98,8 +119,8 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         }
     }
 
-    func sendData(_ data: Data) {
-        guard let peripheral = connectedPeripheral else { return }
+    func sendData(_ data: Data) -> Bool {
+        guard let peripheral = connectedPeripheral else { return true }
 
         for service in peripheral.services ?? [] {
             for characteristic in service.characteristics ?? [] {
@@ -108,5 +129,6 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
                 }
             }
         }
+        return false
     }
 }
