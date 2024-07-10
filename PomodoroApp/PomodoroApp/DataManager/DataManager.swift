@@ -11,12 +11,32 @@ import Combine
 
 struct DataManager {
     private static let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    private static let lastTimeArchiveURL = documentsDirectory.appendingPathComponent("lastTimer").appendingPathExtension("plist")
     private static let archiveURL = documentsDirectory.appendingPathComponent("timer").appendingPathExtension("plist")
     private static let historyURL = documentsDirectory.appendingPathComponent("timerHistory").appendingPathExtension("plist")
     static let timerDidChange = PassthroughSubject<Void, Never>()
     static let historyDidChange = PassthroughSubject<Void, Never>()
     
     
+    static func saveLastTimer(_ customTime: CustomTime) {
+        do {
+            let encoder = PropertyListEncoder()
+            let data = try encoder.encode(customTime)
+            try data.write(to: lastTimeArchiveURL, options: .noFileProtection)
+        } catch {
+            print("erro")
+        }
+    }
+     
+    static func loadLastTimer() -> CustomTime {
+        do {
+            let data = try Data(contentsOf: lastTimeArchiveURL)
+            let decoder = PropertyListDecoder()
+            return try decoder.decode(CustomTime.self, from: data)
+        } catch {
+            return CustomTime(startTime: "", focusTime: 25, quickStop: 5, longStop: 30, rounds: 4)
+        }
+    }
     
     static func saveTimer(_ customTime: CustomTime) {
         

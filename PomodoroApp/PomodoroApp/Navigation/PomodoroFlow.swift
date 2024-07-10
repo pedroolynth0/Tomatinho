@@ -40,6 +40,7 @@ class PomodoroFlow: ObservableObject {
         self.customTimer = customTimer
         self.customTimer.startTime = formatDate()
         DataManager.saveTimer(self.customTimer)
+        DataManager.saveLastTimer(self.customTimer)
     }
     
     func navigateBackToRoot() {

@@ -8,7 +8,11 @@
 import SwiftUI
 
 class ConfigTimerViewModel: ObservableObject {
-    @Published var customTime: CustomTime = CustomTime(startTime: "\(Date())", focusTime: 25, quickStop: 5, longStop: 30, rounds: 4)
+    @Published var customTime: CustomTime
+    
+    init() {
+        self.customTime = DataManager.loadLastTimer()
+    }
     
     func removeRound() {
         self.customTime.rounds = max(1, customTime.rounds - 1)
