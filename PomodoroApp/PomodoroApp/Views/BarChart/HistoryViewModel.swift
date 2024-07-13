@@ -77,14 +77,15 @@ class HistoryViewModel: ObservableObject {
             focusTmp += Float(timer.focusTime * timer.rounds)  / 60
             breakTmp += Float((timer.quickStop * timer.rounds - 1 ) + timer.longStop) / 60
         }
-        let totalTmp = floor(breakTmp) + floor(focusTmp)
-        self.focusTime = "\(formattedNumber(number: floor(focusTmp)))h"
-        self.breakTime = "\(formattedNumber(number: floor(breakTmp)))h"
+        let totalTmp = breakTmp + focusTmp
+        self.focusTime = "\(formattedNumber(number: focusTmp))h"
+        self.breakTime = "\(formattedNumber(number: breakTmp))h"
         self.totalTime = "\(formattedNumber(number: totalTmp))h"
     }
     
     func formattedNumber(number: Float) -> String {
-        return number.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", number) : String(number)
+        let roundedNumber = floor(number * 10) / 10
+        return String(format: "%.1f", roundedNumber)
     }
     
     func filterTimersForTodayOrWeek() {
