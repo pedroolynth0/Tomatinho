@@ -10,7 +10,6 @@ import SwiftUI
 struct ConfigTimerView: View {
     @EnvironmentObject var pomodoroFlow: PomodoroFlow
     @StateObject var viewModel = ConfigTimerViewModel()
-    @StateObject var bluetoothManager = BluetoothManager()
     @State private var showAlert = false
     @State private var showAlertStartError = false
     
@@ -21,10 +20,8 @@ struct ConfigTimerView: View {
             
             ScrollView {
                 VStack(alignment: .leading, spacing: 45) {
-                    bluetoothButton
-                    
+                    Spacer()
                     gridTimers
-                    
                     button
                     Spacer()
                 }
@@ -38,29 +35,14 @@ struct ConfigTimerView: View {
             CustomAlertView(title: "Não foi possível criar os timers!", text: "Dispositivo desconectado. Realize a conexão bluetooth.", isPresented: $showAlertStartError),
             alignment: .center
         )
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                _ = bluetoothManager.connectToPeripheral()
-            }
-        }
     }
     
     var button: some View {
         HStack {
             Spacer()
             Button(action: {
-                if bluetoothManager.isConnected {
                     pomodoroFlow.customTimer = viewModel.customTime
-                    if let data = pomodoroFlow.sendCustomTimer().data(using: .utf8) {
-                        if !bluetoothManager.sendData(data) {
-                            pomodoroFlow.saveTime(customTimer: viewModel.customTime)
-                        } else {
-                            showAlertStartError = true
-                        }
-                    }
-                } else {
-                    showAlertStartError = true
-                }
+                    pomodoroFlow.saveTime(customTimer: viewModel.customTime)
             }) {
                 Image(systemName: "play.fill")
                     .resizable()
@@ -75,20 +57,6 @@ struct ConfigTimerView: View {
         .padding(.top, 30)
         
     }
-    var bluetoothButton: some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                showAlert = !bluetoothManager.connectToPeripheral()
-            }) {
-                bluetoothText
-            }
-            .disabled(bluetoothManager.isConnected)
-            .shadow(color: Color.black.opacity(0.20), radius: 4, x: 0, y: 1)
-            Spacer()
-        }
-        
-    }
     
     var gridTimers: some View {
         VStack(alignment: .center ,spacing: 50) {
@@ -96,38 +64,6 @@ struct ConfigTimerView: View {
             configItem(name: "Tempo de Foco", value: "\(viewModel.customTime.focusTime):00", subFunc: viewModel.removeFocusTime, addFunc: viewModel.addFocusTime)
             configItem(name: "Pausa Curta", value: "\(viewModel.customTime.quickStop):00", subFunc: viewModel.removeQuickStop, addFunc: viewModel.addQuickStop)
             configItem(name: "Pausa Longa", value: "\(viewModel.customTime.longStop):00", subFunc: viewModel.removeLongStop, addFunc: viewModel.addLongStop)
-        }
-    }
-    
-    
-    var bluetoothText: some View {
-        if (bluetoothManager.isConnected) {
-            Text("Conectado ao dispositivo")
-                .foregroundStyle(Color(UIColor.mainColor.asColor))
-                .font(.custom("ZillaSlab-Bold", size: 18))
-                .padding(.vertical, 6)
-                .padding(.horizontal, 16 )
-                .background(Color(UIColor.whiteButtonColor.asColor))
-                .cornerRadius(50)
-                .overlay(
-                     RoundedRectangle(cornerRadius: 50)
-                         .stroke(Color.black, lineWidth: 0)
-                 )
-
-
-
-        } else {
-            Text("Clique para conectar ao dispositivo")
-                .foregroundStyle(Color(UIColor.mainColor.asColor))
-                .font(.custom("ZillaSlab-Bold", size: 18))
-                .padding(.vertical, 6)
-                .padding(.horizontal, 16 )
-                .background(Color(UIColor.connectColor.asColor))
-                .cornerRadius(50)
-                .overlay(
-                     RoundedRectangle(cornerRadius: 50)
-                         .stroke(Color(UIColor.mainColor.asColor), lineWidth: 1)
-                 )
         }
     }
     

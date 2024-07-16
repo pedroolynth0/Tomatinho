@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */; };
-		815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9122BD487DC00DD2ABE /* BluetoothView.swift */; };
-		815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */; };
 		81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C0F0362BD593D700F42259 /* CustomAlertView.swift */; };
 		81D286AB2BFF566B00713F26 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D286AA2BFF566B00713F26 /* BarChartView.swift */; };
 		81D286AD2BFF82CA00713F26 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D286AC2BFF82CA00713F26 /* HistoryView.swift */; };
@@ -42,9 +39,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		815BD9122BD487DC00DD2ABE /* BluetoothView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothView.swift; sourceTree = "<group>"; };
-		815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothViewModel.swift; sourceTree = "<group>"; };
 		81C0F0362BD593D700F42259 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		81D286AA2BFF566B00713F26 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		81D286AC2BFF82CA00713F26 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HistoryView.swift; path = PomodoroApp/Views/BarChart/HistoryView.swift; sourceTree = SOURCE_ROOT; };
@@ -89,23 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		815BD90E2BD4871900DD2ABE /* BluetoothManager */ = {
-			isa = PBXGroup;
-			children = (
-				815BD90F2BD4873800DD2ABE /* BluetoothManager.swift */,
-			);
-			path = BluetoothManager;
-			sourceTree = "<group>";
-		};
-		815BD9112BD487C400DD2ABE /* Bluetooth */ = {
-			isa = PBXGroup;
-			children = (
-				815BD9122BD487DC00DD2ABE /* BluetoothView.swift */,
-				815BD9142BD4882300DD2ABE /* BluetoothViewModel.swift */,
-			);
-			path = Bluetooth;
-			sourceTree = "<group>";
-		};
 		81D286A92BFF564300713F26 /* BarChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +128,6 @@
 		B77FD6AD2B9E0D400088A083 /* PomodoroApp */ = {
 			isa = PBXGroup;
 			children = (
-				815BD90E2BD4871900DD2ABE /* BluetoothManager */,
 				B7E618ED2BC5DD6400DC49B6 /* Model */,
 				B7E618EA2BC5DC8200DC49B6 /* DataManager */,
 				B77FD6BC2B9E0EAB0088A083 /* Views */,
@@ -178,7 +154,6 @@
 			children = (
 				81D286A92BFF564300713F26 /* BarChart */,
 				B70867032BDAF04F0034296E /* SplashView */,
-				815BD9112BD487C400DD2ABE /* Bluetooth */,
 				B77FD6BF2B9E0F0B0088A083 /* About */,
 				B77FD6BE2B9E0ECE0088A083 /* History */,
 				B77FD6BD2B9E0EB40088A083 /* Timer */,
@@ -377,13 +352,10 @@
 				B7E618F12BC5E38D00DC49B6 /* PomodoroTimerView.swift in Sources */,
 				81D286B12BFFCDF300713F26 /* StudyDataPoint.swift in Sources */,
 				81DEDA182BFE872500C79180 /* ChooseTimerViewModel.swift in Sources */,
-				815BD9152BD4882300DD2ABE /* BluetoothViewModel.swift in Sources */,
 				81D286AD2BFF82CA00713F26 /* HistoryView.swift in Sources */,
 				B77FD6D22B9E18280088A083 /* Colors.swift in Sources */,
 				B7E618E62BC5AC5E00DC49B6 /* MainTabView.swift in Sources */,
-				815BD9132BD487DC00DD2ABE /* BluetoothView.swift in Sources */,
 				81D286AF2BFFCDA100713F26 /* HistoryViewModel.swift in Sources */,
-				815BD9102BD4873800DD2ABE /* BluetoothManager.swift in Sources */,
 				81C0F0372BD593D700F42259 /* CustomAlertView.swift in Sources */,
 				B70867022BDAEA190034296E /* TomatoView.swift in Sources */,
 				81DEDA132BFE80F100C79180 /* ChoosePomodoroView.swift in Sources */,

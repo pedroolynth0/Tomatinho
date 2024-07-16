@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PomodoroTimerView: View {
     @StateObject private var viewModel = PomodoroTimerViewModel()
-    @StateObject var bluetoothManager = BluetoothManager()
     @State private var showAlert = false
     
     var body: some View {
@@ -17,12 +16,11 @@ struct PomodoroTimerView: View {
                 VStack(spacing: 45) {
                     TitleView(title: "Pomodoro Timer")
                         .padding(.top, 29)
-                    bluetoothButton
                 }
                 circles
                     .frame(width: 350)
                 Spacer()
-//                Button("remove Timer", action: viewModel.removeTimer)
+                Button("remove Timer", action: viewModel.removeTimer)
                 
             }
             .overlay(
@@ -31,12 +29,6 @@ struct PomodoroTimerView: View {
             )
             .onReceive(viewModel.timer) { time in
                 viewModel.tick()
-            }
-            .onAppear() {
-                viewModel.loadTimer()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                    _ = !bluetoothManager.connectToPeripheral()
-                }
             }
     }
     
@@ -64,52 +56,6 @@ struct PomodoroTimerView: View {
             
         }
         .padding(60)
-    }
-    
-    var bluetoothButton: some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                showAlert = !bluetoothManager.connectToPeripheral()
-            }) {
-                bluetoothText
-            }
-            .disabled(bluetoothManager.isConnected)
-            .shadow(color: Color.black.opacity(0.20), radius: 4, x: 0, y: 1)
-            Spacer()
-        }
-        
-    }
-    
-    var bluetoothText: some View {
-        if (bluetoothManager.isConnected) {
-            Text("Conectado ao dispositivo")
-                .foregroundStyle(Color(UIColor.mainColor.asColor))
-                .font(.custom("ZillaSlab-Bold", size: 18))
-                .padding(.vertical, 6)
-                .padding(.horizontal, 16 )
-                .background(Color(UIColor.whiteButtonColor.asColor))
-                .cornerRadius(50)
-                .overlay(
-                     RoundedRectangle(cornerRadius: 50)
-                         .stroke(Color.black, lineWidth: 0)
-                 )
-
-
-
-        } else {
-            Text("Clique para conectar ao dispositivo")
-                .foregroundStyle(Color(UIColor.mainColor.asColor))
-                .font(.custom("ZillaSlab-Bold", size: 18))
-                .padding(.vertical, 6)
-                .padding(.horizontal, 16 )
-                .background(Color(UIColor.connectColor.asColor))
-                .cornerRadius(50)
-                .overlay(
-                     RoundedRectangle(cornerRadius: 50)
-                         .stroke(Color(UIColor.mainColor.asColor), lineWidth: 1)
-                 )
-        }
     }
 }
 
